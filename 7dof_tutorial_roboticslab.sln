@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7dof_tutorial_roboticslab", "7dof_tutorial_roboticslab\7dof_tutorial_roboticslab.vcproj", "{726EBE2D-D094-4623-8FF0-C771CFA910F5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7dof_tutorial_roboticslab_control_pd", "7dof_tutorial_roboticslab_control_pd\7dof_tutorial_roboticslab_control_pd.vcproj", "{87A4F2D4-C55A-40DB-884B-7CD995F14154}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7dof_tutorial_roboticslab_control_skel", "7dof_tutorial_roboticslab_control_skel\7dof_tutorial_roboticslab_control_skel.vcproj", "{667D5823-4EF2-445D-B474-93F5F070F42F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +17,14 @@ Global
 		{726EBE2D-D094-4623-8FF0-C771CFA910F5}.Debug|Win32.Build.0 = Debug|Win32
 		{726EBE2D-D094-4623-8FF0-C771CFA910F5}.Release|Win32.ActiveCfg = Release|Win32
 		{726EBE2D-D094-4623-8FF0-C771CFA910F5}.Release|Win32.Build.0 = Release|Win32
+		{87A4F2D4-C55A-40DB-884B-7CD995F14154}.Debug|Win32.ActiveCfg = Debug|Win32
+		{87A4F2D4-C55A-40DB-884B-7CD995F14154}.Debug|Win32.Build.0 = Debug|Win32
+		{87A4F2D4-C55A-40DB-884B-7CD995F14154}.Release|Win32.ActiveCfg = Release|Win32
+		{87A4F2D4-C55A-40DB-884B-7CD995F14154}.Release|Win32.Build.0 = Release|Win32
+		{667D5823-4EF2-445D-B474-93F5F070F42F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{667D5823-4EF2-445D-B474-93F5F070F42F}.Debug|Win32.Build.0 = Debug|Win32
+		{667D5823-4EF2-445D-B474-93F5F070F42F}.Release|Win32.ActiveCfg = Release|Win32
+		{667D5823-4EF2-445D-B474-93F5F070F42F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
