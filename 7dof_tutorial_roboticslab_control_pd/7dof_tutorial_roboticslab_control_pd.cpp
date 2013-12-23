@@ -120,17 +120,16 @@ void My7dof_tutorial_roboticslab_control_pd::_readDevices()
 	 		{
 	 			readDeviceValue(dev->enc, &value, 1*sizeof(float));
 	 			_q[i] = value / dev->enc_reduction;
-				printf("%d: %2.3f\t", i, _q[i]);
+				//printf("%d: %2.3f\t", i, _q[i]);
 	 		}
 			
-	 
 	 		/*if (dev->tacho != INVALID_RHANDLE)
 	 		{
 	 			readDeviceValue(dev->tacho, &value, 1*sizeof(float));
 	 			_qdot[i] = value / dev->tacho_reduction;
 	 		}*/
 	 	}
-		printf("\n");
+		//printf("\n");
 }
 
 void My7dof_tutorial_roboticslab_control_pd::_writeDevices()
@@ -195,10 +194,35 @@ int My7dof_tutorial_roboticslab_control_pd::command(const short& cmd, const int&
 
 void My7dof_tutorial_roboticslab_control_pd::datanames(vector<string_type>& names, int channel)
 {
+
+	switch (channel)
+    {
+            case 240:
+                    {
+                            TCHAR dname[64];
+                            for (int i=0; i<_jdof; i++) {
+                                    _stprintf(dname, _T("J%d"), i);
+                                    names.push_back(dname);
+                            }
+                    }
+                    break; 
+    }
+
 }
 
 void My7dof_tutorial_roboticslab_control_pd::collect(vector<double>& data, int channel)
 {
+	switch (channel)
+    {
+			case 240:
+            {
+				for (int i=0; i<_jdof; i++) {
+                    data.push_back(_q[i]);
+				}
+
+            }
+            break;
+    }
 }
 
 void My7dof_tutorial_roboticslab_control_pd::onSetInterestFrame(const TCHAR* name, const HTransform& T)

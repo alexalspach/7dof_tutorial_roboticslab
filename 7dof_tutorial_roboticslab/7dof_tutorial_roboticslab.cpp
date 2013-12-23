@@ -32,7 +32,7 @@ bool bContact = true;		// Enables/disables contact dynamics.
 bool bQuit = false;			// Set this flag true to quit this program.
 bool bRun = false;			// Set this flag true to activate the program.
 										// See OnKeyRun() function for the details.
-const rTime delT = 0.005;
+const rTime delT = 0.002;
 string_type aml_path = _T("D:/Projects/gitRepos/alexalspach/roboticslab/7dof_tutorial_roboticslab/models/wam7.aml");
 string_type aml_name = _T("WAM");
 HTransform aml_T0;
@@ -44,11 +44,13 @@ HTransform eml_T0;
 rxEnvironment* env = NULL;
 rxControlInterface* control = NULL;
 //string_type control_path = _T("controls/rControlDummy.dll");
+// This path can target an XDL instead
 string_type control_path = _T("controls/7dof_tutorial_roboticslab_control_pd.dll");
 string_type control_name = _T("MyController");
 
 void MyKeyboardHandler(int key, void* data);
 void MyControlCallback(rTime time, void* data);
+void SetupDAQ();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -60,7 +62,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	sys = rCreateSystem(aml_path, aml_name, aml_T0, aml_q0);
 	env = rCreateEnvironment(eml_path, eml_name, eml_T0);
 
-	rInitializeEx();
+	rInitializeEx(true, true);
 
 	if (sys)
 	{
@@ -72,6 +74,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		control->initAlgorithm();
 	}
 
+	SetupDAQ();
+	
 	rAddKeyboardHandler(MyKeyboardHandler, NULL);
 	//rAddControlHandler(MyControlCallback, NULL);
 	rRun(-1);
@@ -124,6 +128,14 @@ void MyKeyboardHandler(int key, void* data)
 		break;
 	}
 }
+
+
+void SetupDAQ()
+{
+        rID pid_enc = rdaqCreatePlot(_T("encoders"), eDataPlotType_TimeLine);
+        rdaqAddData(pid_enc, control, 240);
+}
+
 
 void MyControlCallback(rTime time, void* data)
 {
