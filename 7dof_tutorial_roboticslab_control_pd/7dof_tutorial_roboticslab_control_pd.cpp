@@ -13,6 +13,7 @@ My7dof_tutorial_roboticslab_control_pd::My7dof_tutorial_roboticslab_control_pd(r
 :rControlAlgorithm(rdc)
 #endif
 , _jdof(0)
+, _dT(0)
 {
 }
 
@@ -88,9 +89,39 @@ void My7dof_tutorial_roboticslab_control_pd::init(int mode)
 	_qdot.resize(_jdof);
 	_torque.resize(_jdof);
 
+	_q_des.resize(_jdof);
+	_q_pre.resize(_jdof);
+
+	_kp.resize(_jdof);
+	_kd.resize(_jdof);
+
 	_q.zero();
 	_qdot.zero();
 	_torque.zero();
+
+	_q_des.zero();
+	_q_pre.zero();
+
+	_kp.zero();
+	_kd.zero();
+
+	// PD Gains
+	_kp[0] = 20.0;
+	_kp[1] = 45.0;
+	_kp[2] = 15.0;
+	_kp[3] = 20.0;
+	_kp[4] = 2.0;
+	_kp[5] = 2.0;
+	_kp[6] = 0.5;
+
+	_kd[0] = 1.0;
+	_kd[1] = 2.0;
+	_kd[2] = 1.0;
+	_kd[3] = 2.0;
+	_kd[4] = 0.2;
+	_kd[5] = 0.2;
+	_kd[6] = 0.01;
+
 
 	//  Example code for adding an interest frame..
 	//	addInterestFrame(_T("desired frame"));
@@ -108,6 +139,7 @@ void My7dof_tutorial_roboticslab_control_pd::setNominalSystem(const TCHAR* path,
 
 void My7dof_tutorial_roboticslab_control_pd::setPeriod(const rTime& dT)
 {
+	_dT = dT;
 }
 
 void My7dof_tutorial_roboticslab_control_pd::_readDevices()
@@ -140,7 +172,7 @@ void My7dof_tutorial_roboticslab_control_pd::_writeDevices()
 	 	{
 	 		if (dev->motor != INVALID_RHANDLE)
 	 		{
-	 			value = 0.0; // _torque[i] / dev->motor_reduction;
+	 			value = _torque[i] / dev->motor_reduction;
 	 			writeDeviceValue(dev->motor, &value, 1*sizeof(float));
 	 		}
 	 	}
@@ -148,14 +180,27 @@ void My7dof_tutorial_roboticslab_control_pd::_writeDevices()
 
 void My7dof_tutorial_roboticslab_control_pd::_reflect()
 {
+
 }
 
 void My7dof_tutorial_roboticslab_control_pd::_compute(const double& t)
 {
+
+	// PD control torque calculation
+	for (int i=0; i<_jdof; i++) {
+		_torque[i] = _kp[i]*(_q_des[i]-_q[i]) - _kd[i]*_qdot[i];
+	}
+
 }
 
 void My7dof_tutorial_roboticslab_control_pd::_estimate()
 {
+	// Estimate system state variables that we do not have direct measurement of
+	for (int i=0; i<_jdof; i++) {
+		_qdot[i] = (_q[i] - _q_pre[i]) / _dT;
+		_q_pre[i] = _q[i];
+	}
+
 }
 
 int My7dof_tutorial_roboticslab_control_pd::command(const short& cmd, const int& arg)
@@ -165,14 +210,12 @@ int My7dof_tutorial_roboticslab_control_pd::command(const short& cmd, const int&
 	case DEFAULT_CMD:
 		break;
 
-		// 	case USER_CMD_1:
-		// 		{
-		//			// For example, find a device and write a value.
-		// 			rHANDLE device = findDevice(_T("YOUR_DEVICE_NAME")); 
-		// 			writeDeviceValue(device, &value, 1*sizeof(float));
-		// 		}
-		// 
-		// 		break;
+ 	case RESERVED_CMD_GO_HOME:
+ 		{
+			for (int i=0; i<_jdof; i++) _q_des[i] += 0.05; 
+ 		}
+ 
+ 		break;
 
 
 	case RESERVED_CMD_SERVO_ON:
@@ -206,6 +249,33 @@ void My7dof_tutorial_roboticslab_control_pd::datanames(vector<string_type>& name
                             }
                     }
                     break; 
+
+            case 241:
+                    {
+                            TCHAR dname[64];
+                            for (int i=0; i<_jdof; i++) {
+                                    _stprintf(dname, _T("J%d"), i);
+                                    names.push_back(dname);
+                            }
+                    }
+                    break; 
+
+            case 250:
+                    {
+						// make sure its the same as below
+						int joint_num = 1;
+                        TCHAR dname[64];
+
+                        _stprintf(dname, _T("_q_des %d"), joint_num);
+                        names.push_back(dname);
+
+                        _stprintf(dname, _T("_q %d"), joint_num);
+                        names.push_back(dname);
+
+                        _stprintf(dname, _T("_torque %d"), joint_num);
+                        names.push_back(dname);
+                    }
+                    break; 
     }
 
 }
@@ -220,6 +290,26 @@ void My7dof_tutorial_roboticslab_control_pd::collect(vector<double>& data, int c
                     data.push_back(_q[i]);
 				}
 
+            }
+            break;
+
+			case 241:
+            {
+				for (int i=0; i<_jdof; i++) {
+                    data.push_back(_q_des[i]);
+				}
+
+            }
+            break;
+
+			case 250:
+            {
+				// make sure its the same as above
+				int joint_num = 1;
+                   
+                data.push_back(_q_des[joint_num]);
+                data.push_back(_q[joint_num]);
+                data.push_back(_torque[joint_num]);
             }
             break;
     }

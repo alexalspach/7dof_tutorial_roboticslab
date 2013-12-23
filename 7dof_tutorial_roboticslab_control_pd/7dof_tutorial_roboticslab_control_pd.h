@@ -59,12 +59,23 @@ private:
 
 
 private:
-		std::list<JDevices>	_device;
+	std::list<JDevices>	_device;
+
+	float				_dT;
 
 	dVector				_q;
 	dVector				_qdot;
 	dVector				_torque;
 
+	dVector				_q_des;
+	dVector				_q_pre;
+
+	dVector				_kp;
+	dVector				_kd;
+
 	int					_jdof;
+
+
+
 };
 #endif

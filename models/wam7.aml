@@ -30,7 +30,7 @@
     </collision>
     <constraint kp="10000 10000 10000 10000 10000 10000 " kv="200 200 200 200 200 200 " name="FE" type="EARTHING"/>
     <child>
-      <joint Rflat="-1 0 0 0 1 9.7972e-016 0 9.7972e-016 -1" Rsharp="-1 0 0 0 0 -1 0 -1 0" activated="true" coulomb="0.01 " custom_physics="" damping="0.01 " dof="1" limit="0 0 " name="Joint1" neutral="0 " parameters="" restitution="0 " rflat="0 0 -0.186" rsharp="0 0.186 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
+      <joint Rflat="-1 0 0 0 1 1.10218e-015 0 1.10218e-015 -1" Rsharp="-1 0 0 0 0 -1 0 -1 0" activated="true" coulomb="0 " custom_physics="" damping="0.05 " dof="1" limit="0 0 " name="Joint1" neutral="0 " parameters="" restitution="0 " rflat="0 0 -0.186" rsharp="0 0.186 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
         <device R="1 0 0 0 1 0 0 0 1" dml="devices\enc_v1.0.dml" name="enc1" r="0 0 0"/>
         <device R="1 0 0 0 1 0 0 0 1" dml="devices\tacho_v1.0.dml" name="tacho1" r="0 0 0"/>
         <device R="1 0 0 0 1 0 0 0 1" dml="devices\motor_v1.0.dml" name="motor1" r="0 0 0"/>
@@ -63,7 +63,7 @@
           </geometry>
         </collision>
         <child>
-          <joint Rflat="-6.9389e-015 -1 -9.81454e-016 -1 6.9389e-015 3.4972e-015 -3.4972e-015 9.81454e-016 -1" Rsharp="0 1 0 0 0 1 1 0 0" activated="true" coulomb="0.01 " custom_physics="" damping="0.01 " dof="1" limit="0 0 " name="Joint2" neutral="0 " parameters="" restitution="0 " rflat="0 0 0" rsharp="0 0 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
+          <joint Rflat="-6.9389e-015 -1 -1.10392e-015 -1 6.9389e-015 3.4972e-015 -3.4972e-015 1.10392e-015 -1" Rsharp="0 1 0 0 0 1 1 0 0" activated="true" coulomb="0 " custom_physics="" damping="0.05 " dof="1" limit="0 0 " name="Joint2" neutral="0 " parameters="" restitution="0 " rflat="0 0 0" rsharp="0 0 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
             <device R="1 0 0 0 1 0 0 0 1" dml="devices\enc_v1.0.dml" name="enc2" r="0 0 0"/>
             <device R="1 0 0 0 1 0 0 0 1" dml="devices\tacho_v1.0.dml" name="tacho2" r="0 0 0"/>
             <device R="1 0 0 0 1 0 0 0 1" dml="devices\motor_v1.0.dml" name="motor2" r="0 0 0"/>
@@ -86,7 +86,7 @@
               </shape>
             </render>
             <child>
-              <joint Rflat="-1 7.80725e-033 6.69277e-048 3.7982e-033 1 9.7972e-016 0 9.7972e-016 -1" Rsharp="-1 0 0 0 0 -1 0 -1 0" activated="true" coulomb="0.01 " custom_physics="" damping="0.01 " dof="1" limit="0 0 " name="Joint3" neutral="0 " parameters="" restitution="0 " rflat="0 -2.95823e-031 0" rsharp="-0.045 0.55 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
+              <joint Rflat="-1 7.80725e-033 7.64888e-048 3.7982e-033 1 1.10218e-015 0 1.10218e-015 -1" Rsharp="-1 0 0 0 0 -1 0 -1 0" activated="true" coulomb="0 " custom_physics="" damping="0.05 " dof="1" limit="0 0 " name="Joint3" neutral="0 " parameters="" restitution="0 " rflat="0 -2.95823e-031 0" rsharp="-0.045 0.55 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
                 <device R="1 0 0 0 1 0 0 0 1" dml="devices\enc_v1.0.dml" name="enc3" r="0 0 0"/>
                 <device R="1 0 0 0 1 0 0 0 1" dml="devices\tacho_v1.0.dml" name="tacho3" r="0 0 0"/>
                 <device R="1 0 0 0 1 0 0 0 1" dml="devices\motor_v1.0.dml" name="motor3" r="0 0 0"/>
@@ -114,7 +114,7 @@
                   </geometry>
                 </collision>
                 <child>
-                  <joint Rflat="0 -1 -9.7972e-016 -1 -4.73317e-030 -4.05754e-045 0 9.7972e-016 -1" Rsharp="0 1 0 0 0 1 1 0 0" activated="true" coulomb="0.01 " custom_physics="" damping="0.01 " dof="1" limit="0 0 " name="Joint4" neutral="0 " parameters="" restitution="0 " rflat="0 2.12992e-031 -1.27055e-021" rsharp="0.045 1e-006 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
+                  <joint Rflat="0 -1 -1.10218e-015 -1 -4.73317e-030 -4.63719e-045 0 1.10218e-015 -1" Rsharp="0 1 0 0 0 1 1 0 0" activated="true" coulomb="0 " custom_physics="" damping="0.05 " dof="1" limit="0 0 " name="Joint4" neutral="0 " parameters="" restitution="0 " rflat="0 2.12992e-031 -1.27055e-021" rsharp="0.045 1e-006 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
                     <device R="1 0 0 0 1 0 0 0 1" dml="devices\enc_v1.0.dml" name="enc4" r="0 0 0"/>
                     <device R="1 0 0 0 1 0 0 0 1" dml="devices\tacho_v1.0.dml" name="tacho4" r="0 0 0"/>
                     <device R="1 0 0 0 1 0 0 0 1" dml="devices\motor_v1.0.dml" name="motor4" r="0 0 0"/>
@@ -147,7 +147,7 @@
                       </geometry>
                     </collision>
                     <child>
-                      <joint Rflat="1 2.74969e-031 2.35718e-046 -1.68447e-032 -1 -9.7972e-016 0 9.7972e-016 -1" Rsharp="1 0 0 0 0 -1 0 1 0" activated="true" coulomb="0.01 " custom_physics="" damping="0.01 " dof="1" limit="0 0 " name="Joint5" neutral="0 " parameters="" restitution="0 " rflat="0 4.77473e-023 -5.55112e-017" rsharp="0 0.2989 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
+                      <joint Rflat="1 2.74969e-031 2.69392e-046 -1.68447e-032 -1 -1.10218e-015 0 1.10218e-015 -1" Rsharp="1 0 0 0 0 -1 0 1 0" activated="true" coulomb="0 " custom_physics="" damping="0.05 " dof="1" limit="0 0 " name="Joint5" neutral="0 " parameters="" restitution="0 " rflat="0 4.77473e-023 -5.55112e-017" rsharp="0 0.2989 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
                         <device R="1 0 0 0 1 0 0 0 1" dml="devices\enc_v1.0.dml" name="enc5" r="0 0 0"/>
                         <device R="1 0 0 0 1 0 0 0 1" dml="devices\tacho_v1.0.dml" name="tacho5" r="0 0 0"/>
                         <device R="1 0 0 0 1 0 0 0 1" dml="devices\motor_v1.0.dml" name="motor5" r="0 0 0"/>
@@ -178,7 +178,7 @@
                           </geometry>
                         </collision>
                         <child>
-                          <joint Rflat="0 -1 -9.7972e-016 -1 0 0 0 9.7972e-016 -1" Rsharp="0 1 0 0 0 1 1 0 0" activated="true" coulomb="0.01 " custom_physics="" damping="0.01 " dof="1" limit="0 0 " name="Joint6" neutral="0 " parameters="" restitution="0 " rflat="0 0 0" rsharp="0 0 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
+                          <joint Rflat="0 -1 -1.10218e-015 -1 0 0 0 1.10218e-015 -1" Rsharp="0 1 0 0 0 1 1 0 0" activated="true" coulomb="0 " custom_physics="" damping="0.05 " dof="1" limit="0 0 " name="Joint6" neutral="0 " parameters="" restitution="0 " rflat="0 0 0" rsharp="0 0 0" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
                             <device R="1 0 0 0 1 0 0 0 1" dml="devices\enc_v1.0.dml" name="enc6" r="0 0 0"/>
                             <device R="1 0 0 0 1 0 0 0 1" dml="devices\tacho_v1.0.dml" name="tacho6" r="0 0 0"/>
                             <device R="1 0 0 0 1 0 0 0 1" dml="devices\motor_v1.0.dml" name="motor6" r="0 0 0"/>
@@ -216,7 +216,7 @@
                               </geometry>
                             </collision>
                             <child>
-                              <joint Rflat="-1 2.78978e-031 2.39155e-046 -2.08537e-032 1 9.7972e-016 0 9.7972e-016 -1" Rsharp="-1 0 0 0 -1 0 0 0 1" activated="true" coulomb="0.01 " custom_physics="" damping="0.5 " dof="1" limit="0 0 " name="Joint7" neutral="0 " parameters="" restitution="0 " rflat="0 1.5e-005 0.04795" rsharp="0 0 -0.006" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
+                              <joint Rflat="-1 2.78978e-031 2.7332e-046 -2.08537e-032 1 1.10218e-015 0 1.10218e-015 -1" Rsharp="-1 0 0 0 -1 0 0 0 1" activated="true" coulomb="0 " custom_physics="" damping="0.05 " dof="1" limit="0 0 " name="Joint7" neutral="0 " parameters="" restitution="0 " rflat="0 1.5e-005 0.04795" rsharp="0 0 -0.006" stiction="0 0 " stiffness="0 " stribeck="0 0 " type="REVOLUTE">
                                 <device R="1 0 0 0 1 0 0 0 1" dml="devices\enc_v1.0.dml" name="enc7" r="0 0 0"/>
                                 <device R="1 0 0 0 1 0 0 0 1" dml="devices\tacho_v1.0.dml" name="tacho7" r="0 0 0"/>
                                 <device R="1 0 0 0 1 0 0 0 1" dml="devices\motor_v1.0.dml" name="motor7" r="0 0 0"/>

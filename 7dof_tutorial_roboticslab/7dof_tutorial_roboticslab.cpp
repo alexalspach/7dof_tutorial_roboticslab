@@ -28,10 +28,11 @@ using namespace rMath;
 #include "rxSDK/rxSDK.h"
 #include "rCommon/rCodeUtil.h"
 
-bool bContact = true;		// Enables/disables contact dynamics.
+bool bContact = false;		// Enables/disables contact dynamics.
 bool bQuit = false;			// Set this flag true to quit this program.
 bool bRun = false;			// Set this flag true to activate the program.
 										// See OnKeyRun() function for the details.
+// const rTime delT = 0.005;
 const rTime delT = 0.002;
 string_type aml_path = _T("D:/Projects/gitRepos/alexalspach/roboticslab/7dof_tutorial_roboticslab/models/wam7.aml");
 string_type aml_name = _T("WAM");
@@ -118,6 +119,7 @@ void MyKeyboardHandler(int key, void* data)
 	case VK_H:
 	case VK_Z:
 		{
+			printf("Home CMD.\n");
 			if (control)
 				control->command(RESERVED_CMD_GO_HOME, key);
 		}
@@ -132,8 +134,14 @@ void MyKeyboardHandler(int key, void* data)
 
 void SetupDAQ()
 {
-        rID pid_enc = rdaqCreatePlot(_T("encoders"), eDataPlotType_TimeLine);
-        rdaqAddData(pid_enc, control, 240);
+        rID pid_q = rdaqCreatePlot(_T("Encoders"), eDataPlotType_TimeLine);
+        rdaqAddData(pid_q, control, 240);
+
+        rID pid_q_des = rdaqCreatePlot(_T("Desired Pos"), eDataPlotType_TimeLine);
+        rdaqAddData(pid_q_des, control, 241);
+
+        rID pid_pd1 = rdaqCreatePlot(_T("PD Control"), eDataPlotType_TimeLine);
+        rdaqAddData(pid_pd1, control, 250);
 }
 
 
