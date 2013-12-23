@@ -6,6 +6,9 @@
 *.user
 *.sln.docstates
 
+# rBuilder
+*.rUser
+
 # Build results
 
 [Dd]ebug/
