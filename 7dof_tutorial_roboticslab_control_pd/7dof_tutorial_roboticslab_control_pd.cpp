@@ -106,21 +106,21 @@ void My7dof_tutorial_roboticslab_control_pd::init(int mode)
 	_kd.zero();
 
 	// PD Gains
-	_kp[0] = 20.0;
-	_kp[1] = 45.0;
-	_kp[2] = 15.0;
-	_kp[3] = 20.0;
-	_kp[4] = 2.0;
-	_kp[5] = 2.0;
-	_kp[6] = 0.5;
+	_kp[0] = 60.0;
+	_kp[1] = 150.0;
+	_kp[2] = 40.0;
+	_kp[3] = 80.0;
+	_kp[4] = 40.0;
+	_kp[5] = 20.0;
+	_kp[6] = 20.0;
 
-	_kd[0] = 1.0;
-	_kd[1] = 2.0;
-	_kd[2] = 1.0;
-	_kd[3] = 2.0;
+	_kd[0] = 15.0;
+	_kd[1] = 30.0;
+	_kd[2] = 5.0;
+	_kd[3] = 10.0;
 	_kd[4] = 0.2;
 	_kd[5] = 0.2;
-	_kd[6] = 0.01;
+	_kd[6] = 0.05;
 
 
 	//  Example code for adding an interest frame..
@@ -212,9 +212,20 @@ int My7dof_tutorial_roboticslab_control_pd::command(const short& cmd, const int&
 
  	case RESERVED_CMD_GO_HOME:
  		{
-			for (int i=0; i<_jdof; i++) _q_des[i] += 0.05; 
+			for (int i=0; i<_jdof; i++) _q_des[i] = 0.0;
  		}
- 
+ 		break;
+
+ 	case CMD_ALL_45:
+ 		{
+			for (int i=0; i<_jdof; i++) _q_des[i] = 45*DEGREE; 
+ 		}
+ 		break;
+
+ 	case CMD_PLUS_TEN:
+ 		{
+			for (int i=0; i<_jdof; i++) _q_des[i] += 10*DEGREE; 
+ 		}
  		break;
 
 

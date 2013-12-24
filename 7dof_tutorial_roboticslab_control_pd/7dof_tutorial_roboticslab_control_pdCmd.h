@@ -11,4 +11,7 @@
 #define DEFAULT_CMD		(RCMD_USER + 1)
 //#define USER_CMD_1	(RCMD_USER + 10)
 
+#define CMD_ALL_45		(RCMD_USER + 40)
+#define CMD_PLUS_TEN	(RCMD_USER + 41)
+
 #endif

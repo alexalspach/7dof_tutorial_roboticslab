@@ -35,6 +35,7 @@ bool bRun = false;			// Set this flag true to activate the program.
 // const rTime delT = 0.005;
 const rTime delT = 0.002;
 string_type aml_path = _T("D:/Projects/gitRepos/alexalspach/roboticslab/7dof_tutorial_roboticslab/models/wam7.aml");
+//string_type aml_path = _T("D:/Projects/gitRepos/alexalspach/roboticslab/7dof_tutorial_roboticslab/models/wam7_nofriction.aml");
 string_type aml_name = _T("WAM");
 HTransform aml_T0;
 dVector aml_q0;
@@ -117,13 +118,26 @@ void MyKeyboardHandler(int key, void* data)
 		break;
 
 	case VK_H:
-	case VK_Z:
 		{
 			printf("Home CMD.\n");
 			if (control)
 				control->command(RESERVED_CMD_GO_HOME, key);
 		}
 		break;
+	case VK_Z:
+		{			
+			if (control)
+				control->command(CMD_PLUS_TEN, key);
+		}
+		break;
+	case VK_X:
+		{			
+			if (control)
+				control->command(CMD_ALL_45, key);
+		}
+		break;
+
+
 
 	case VK_1:
 		printf("1 pressed.\n");
